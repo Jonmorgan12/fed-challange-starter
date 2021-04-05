@@ -1,15 +1,14 @@
 .card-container {
   margin: 0 auto;
   padding-top: 50px;
-  width: 90%;
+  width: 75%;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .card {
-  margin-bottom: 25px;
+  margin: 10px;
   width: 288px;
   height: 280px;
   font-size: 10px;
@@ -26,16 +25,15 @@
   align-items: flex-start;
   justify-content: flex-end;
   width: 100%;
-  /* height: 50%; */
-  border-radius: 15px 15px 0 0;
+  border-radius: 5px 5px 0 0;
 }
 
 .img-overlay {
+  margin-left: 11.1rem;
+  position: absolute;
   padding: 25px 0;
   width: 110px;
   height: 114px;
-  z-index: 0;
-  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,7 +53,6 @@
 }
 
 .workout-quantity {
-  font-family: LeagueGothic-Regular;
   font-size: 28px;
   letter-spacing: 0.5px;
   line-height: 30px;
@@ -102,7 +99,7 @@ ul {
 }
 
 .view-details {
-  visibility: hidden;
+  display: none;
   padding: 12px 0;
   font-size: 14px;
   color: #0069d2;
@@ -112,11 +109,15 @@ ul {
 }
 
 .card:hover {
-  /* transform: scale(1.01); */
   background-color: rgba(255, 255, 255, 0.2);
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
 }
 
 .card:hover .view-details {
-  visibility: visible;
+  display: block;
+}
+
+.active {
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.2);
 }

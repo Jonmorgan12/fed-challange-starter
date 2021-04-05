@@ -1,86 +1,64 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Cards.styles.css";
-// import { Link } from "react-router-dom";
-import Image1 from "../../Assets/iFit-paddle-trainer-big-img.jpeg";
-import Image2 from "../../Assets/iFit-timer.png";
-import Image3 from "../../Assets/iFit-pacer.png";
-import Image4 from "../../Assets/iFit-paddle-trainer-smll-img.jpeg";
-import Image5 from "../../Assets/iFit-playlist-img.png";
 
-function Cards() {
+function RenderCard(card, index) {
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    document.addEventListener("mousedown", () => {
+      setActive(false);
+    });
+  });
+
   return (
-    <div className="card-container">
-      {/* CARD ONE */}
-      <div className="card">
-        <div className="card-img">
-          <img src={Image1} alt="paddle-trainer" />
-        </div>
-        <div className="workout-info">
-          <div className="workout-text">
-            <div className="workout-title">
-              <span>
-                <b>Lake Inniscarra, Ireland-Pyramid</b>
-              </span>
-            </div>
-            <div className="workout-statistics">
-              <ul>
-                <li>
-                  <img src={Image2} alt="icon timer" />
-                  <span>
-                    <b>30:53</b>
-                  </span>
-                </li>
-                <li>
-                  <img src={Image3} alt="icon pacer"></img>
-                  <span>
-                    <b>6,248 M</b>
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <div className="view-details">
-              <a target="_blank" rel="noreferrer">
-                <b>View Details</b>
-              </a>
-            </div>
-          </div>
-          <div className="trainer-img">
-            <img src={Image4} alt="trainer img small" />
-          </div>
-        </div>
-      </div>
-      {/* CARD TWO */}
-      <div className="card">
-        <div className="card-img">
-          <img src={Image1} alt="paddle-trainer" />
+    <div
+      onClick={() => setActive(!active)}
+      className={active ? "card active" : "card"}
+      key={index}
+    >
+      <div className="card-img">
+        {card.playlistImage ? (
           <div className="img-overlay">
-            <span className="workout-quantity">9</span>
+            <span className="workout-quantity">{card.workoutNumber}</span>
             <br />
             <span>WORKOUTS</span>
             <br />
-            <img src={Image5} alt="" />
+            <img src={card.playlistImage} alt="" />
+          </div>
+        ) : null}
+        <img src={card.bigCardImage} alt="paddle-trainer" />
+      </div>
+      <div className="workout-info">
+        <div className="workout-text">
+          <div className="workout-title">
+            <span>{card.title}</span>
+          </div>
+          {card.timerImage ? (
+            <div className="workout-statistics">
+              <ul>
+                <li>
+                  <img src={card.timerImage} alt="icon timer" />
+                  <span>{card.timerDetails}</span>
+                </li>
+                <li>
+                  <img src={card.meterImage} alt="icon pacer" />
+                  <span>{card.meterDetails}</span>
+                </li>
+              </ul>
+            </div>
+          ) : null}
+          <div className="view-details">
+            <a target="_blank" rel="noreferrer">
+              View Details
+            </a>
           </div>
         </div>
-        <div className="workout-info">
-          <div className="workout-text">
-            <div className="workout-title">
-              <span>
-                <b>Lake Inniscarra, Ireland-Pyramid</b>
-              </span>
-            </div>
-            <div className="view-details">
-              <a target="_blank" rel="noreferrer">
-                <b>View Details</b>
-              </a>
-            </div>
-          </div>
-          <div className="trainer-img">
-            <img src={Image4} alt="trainer img small" />
-          </div>
+        <div className="trainer-img">
+          <img src={card.smallCardImage} alt="trainer img small" />
         </div>
       </div>
     </div>
   );
 }
 
-export default Cards;
+export default RenderCard;
