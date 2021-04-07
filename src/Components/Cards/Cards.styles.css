@@ -1,7 +1,7 @@
 .card-container {
   margin: 0 auto;
-  padding-top: 50px;
-  width: 75%;
+  padding-top: 15vh;
+  max-width: 80rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
